@@ -20,7 +20,7 @@ namespace BinSearch
                 int middle = first + (last - first) / 2;
                 if (value < array[middle])
                 {
-                    last = middle - 1;
+                    last = middle;
                 }
                 else
                 {
@@ -42,6 +42,7 @@ namespace BinSearch
             TestRepeatingNumbers();
             TestEmptyArray();
             TestBigArray();
+            TestBigArrayGood();
 
             Console.ReadKey();
         }
@@ -143,6 +144,29 @@ namespace BinSearch
             else
             {
                 Console.WriteLine("Поиск в большом массиве работает корректно");
+            }
+        }
+
+        private static void TestBigArrayGood()
+        {
+            int n = 0;
+            int[] bigArray = Enumerable.Range(1, 100000).ToArray();
+
+            for (int i = 0; i < bigArray.Length; i++)
+            {
+                if (BinarySearch(bigArray, bigArray[i]) != i)
+                {
+                    Console.WriteLine("! Поиск не нашёл число {0} в массиве чисел с 1 до 100001", bigArray[i]);
+                    n++;
+                }
+            }
+            if (n == 0)
+            {
+                Console.WriteLine("Поиск в большом массиве работает корректно");
+            }
+            else
+            {
+                Console.WriteLine("Не найдено верно: {0}", n);
             }
         }
     }
