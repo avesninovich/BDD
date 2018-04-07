@@ -20,7 +20,8 @@ namespace Sorts
 
         private static int Partition(int[] array, int first, int last)
         {
-            int pivot = array[first];
+            //int pivot = array[first];
+            int pivot = array[Median(array, first, last)]; 
             int i = first - 1, j = last + 1;
             while (true)
             {
@@ -43,6 +44,20 @@ namespace Sorts
                     return j;
                 }
             }
+        }
+
+        private static int Median(int[] array, int first, int last)
+        {
+            int middle = (first + last) / 2;
+            if (array[middle] >= array[first] && array[middle] <= array[last])
+            {
+                return middle;
+            }
+            if (array[first] >= array[middle] && array[first] <= array[last])
+            {
+                return first;
+            }
+            return last;
         }
 
         private static void Swap(int[] array, int i, int j)

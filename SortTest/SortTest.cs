@@ -48,7 +48,7 @@ namespace SortTest
         public void BigArray()
         {
             var rnd = new Random();
-            var array = new int[1500000000];
+            var array = new int[250000000];
             for (int i = 0; i < array.Length; i++)
                 array[i] = rnd.Next();
             Sort.QuickSort(array, 0, array.Length - 1);
